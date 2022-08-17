@@ -1,0 +1,9 @@
+= Finding Bugs with ArchUnit
+
+This repository contains examples for my talk "Always the same bugs? Use ArchUnit!" (en) resp. "Immer wieder die gleichen Fehler? Nicht mit ArchUnit!" (de)
+
+For more examples, see https://github.com/TNG/ArchUnit-Examples[ArchUnit-Examples].
+
+== Getting started
+
+Run `./mvnw test` and explore the failing tests.
