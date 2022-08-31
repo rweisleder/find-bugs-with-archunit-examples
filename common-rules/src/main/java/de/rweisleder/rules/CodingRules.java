@@ -18,4 +18,9 @@ public class CodingRules {
     public static final ArchRule NO_CLASS_SHOULD_USE_LOG4J =
             classes()
                     .should(not(dependOnClassesThat(resideInAPackage("org.apache.logging.log4j.."))));
+
+    @ArchTest
+    public static final ArchRule NO_CLASS_SHOULD_USE_JACKSON_V1 =
+            classes()
+                    .should(not(dependOnClassesThat(resideInAPackage("org.codehaus.jackson.."))));
 }
