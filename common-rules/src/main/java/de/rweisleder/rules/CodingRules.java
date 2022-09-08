@@ -4,10 +4,7 @@ import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.library.GeneralCodingRules;
 
-import static com.tngtech.archunit.core.domain.JavaClass.Predicates.resideInAPackage;
-import static com.tngtech.archunit.lang.conditions.ArchConditions.dependOnClassesThat;
-import static com.tngtech.archunit.lang.conditions.ArchConditions.not;
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 public class CodingRules {
 
@@ -16,11 +13,16 @@ public class CodingRules {
 
     @ArchTest
     public static final ArchRule NO_CLASS_SHOULD_USE_LOG4J =
-            classes()
-                    .should(not(dependOnClassesThat(resideInAPackage("org.apache.logging.log4j.."))));
+            noClasses()
+                    .should().dependOnClassesThat()
+                    .resideInAPackage("org.apache.logging.log4j..")
+                    .as("classes should not depend on Log4J");
 
     @ArchTest
     public static final ArchRule NO_CLASS_SHOULD_USE_JACKSON_V1 =
-            classes()
-                    .should(not(dependOnClassesThat(resideInAPackage("org.codehaus.jackson.."))));
+            noClasses()
+                    .should().dependOnClassesThat()
+                    .resideInAPackage("org.codehaus.jackson..")
+                    .as("classes should not depend on Jackson v1 (org.codehaus.jackson)")
+                    .because("Jackson v2 (com.fasterxml.jackson) should be used instead");
 }
