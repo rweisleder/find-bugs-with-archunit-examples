@@ -15,7 +15,7 @@
     </modules>
 
     <properties>
-        <archunit.version>1.0.0-rc1</archunit.version>
+        <archunit.version>1.0.0</archunit.version>
         <glassfish-jaxb.version>2.3.6</glassfish-jaxb.version>
         <h2.version>2.1.214</h2.version>
         <lombok.version>1.18.24</lombok.version>
